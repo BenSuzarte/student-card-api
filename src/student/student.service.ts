@@ -18,16 +18,14 @@ export class StudentService
     const validUntilDate = `05/${now.getFullYear() + 1}`;
 
     const useCode = `BRA${Math.random().toString(9).substring(15)}BA`;
-    
-    return await this.studentRepository.save(this.studentRepository.create({
-      name: data.name,
-      college: data.college,
-      course: data.course,
-      cpf: data.cpf,
-      registation: data.registration,
+
+    const student = {
+      ...data,
       validUntil: validUntilDate,
       useCode: useCode,
       pictureFile: picture.filename
-    }))
+    }
+    
+    return await this.studentRepository.save(this.studentRepository.create(student))
   }
 }
