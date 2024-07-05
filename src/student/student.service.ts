@@ -3,7 +3,6 @@ import { Repository } from 'typeorm';
 import { StudentEntity } from './student.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { SaveStudentDto } from './dto/save-student.dto';
-import { randomBytes } from 'crypto';
 
 @Injectable()
 export class StudentService 
