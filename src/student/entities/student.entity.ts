@@ -7,6 +7,12 @@ export class StudentEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
+  @Column({ type: 'text', nullable: false, unique: true })
+  email: string;
+
+  @Column({ type: 'text', nullable: false })
+  password: string;
+
   @Column({ type: 'text', nullable: false })
   name: string;
 

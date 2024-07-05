@@ -3,6 +3,7 @@ import { Repository } from 'typeorm';
 import { StudentEntity } from './entities/student.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { SaveStudentDto } from './dto/save-student.dto';
+import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class StudentService 
@@ -23,9 +24,20 @@ export class StudentService
       ...data,
       validUntil: validUntilDate,
       useCode: useCode,
-      pictureFile: picture.filename
+      pictureFile: picture.filename,
+      password: await bcrypt.hash(data.password, 10)
     }
     
-    return await this.studentRepository.save(this.studentRepository.create(student))
+    const newStudent = await this.studentRepository.save(this.studentRepository.create(student));
+
+    return {
+      ...newStudent,
+      password: undefined
+    }
   }
+
+  async findByEmail(email: string) {
+    return await this.studentRepository.findOne({ where: { email } })
+  }
+
 }
