@@ -1,7 +1,7 @@
 import { MulterOptions } from '@nestjs/platform-express/multer/interfaces/multer-options.interface';
 import { Body, Controller, FileTypeValidator, MaxFileSizeValidator, ParseFilePipe, Post, UploadedFile, UseInterceptors } from '@nestjs/common';
 import { StudentService } from './student.service';
-import { StudentEntity } from './student.entity';
+import { StudentEntity } from './entities/student.entity';
 import { SaveStudentDto } from './dto/save-student.dto';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { MulterOptionsConfig } from './multer-config.service';

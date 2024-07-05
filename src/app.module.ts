@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { StudentModule } from './student/student.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule } from './auth/auth.module';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
@@ -16,7 +17,8 @@ import { AuthModule } from './auth/auth.module';
       entities: [__dirname + "/**/*.entity{.js,.ts}"]
     }),
     StudentModule,
-    AuthModule
+    AuthModule,
+    UserModule
   ]
 })
 export class AppModule {}
