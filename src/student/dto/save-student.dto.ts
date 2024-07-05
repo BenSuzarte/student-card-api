@@ -4,7 +4,7 @@ export class SaveStudentDto {
 
   @IsNotEmpty()
   @IsEmail()
-  emaill: string;
+  email: string;
 
   @IsNotEmpty()
   @IsString()

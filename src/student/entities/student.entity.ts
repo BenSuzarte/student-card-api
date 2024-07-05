@@ -26,7 +26,7 @@ export class StudentEntity {
   cpf: string;
 
   @Column({ type: 'text', nullable: false, unique: true })
-  registation: string;
+  registration: string;
 
   @Column({ name: 'valid_until', type: 'text', nullable: false })
   validUntil: string;
