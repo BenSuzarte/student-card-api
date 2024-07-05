@@ -1,4 +1,4 @@
-import { IsNotEmpty, Max, Min } from "class-validator";
+import { IsJSON, IsNotEmpty, Max, Min } from "class-validator";
 
 export class SaveStudentDto {
   
@@ -12,8 +12,6 @@ export class SaveStudentDto {
   course: string;
   
   @IsNotEmpty()
-  @Max(11)
-  @Min(11)
   cpf: string;
 
   @IsNotEmpty()
