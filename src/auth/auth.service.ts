@@ -1,10 +1,17 @@
 import { Injectable } from '@nestjs/common';
 import { StudentService } from 'src/student/student.service';
 import * as bcrypt from 'bcrypt';
+import { StudentEntity } from 'src/student/entities/student.entity';
+import { StudentPayload } from './models/StudentPayload';
+import { JwtService } from '@nestjs/jwt';
+import { StudentToken } from './models/StudentToken';
 
 @Injectable()
 export class AuthService {
-  constructor (private readonly studentService: StudentService) {}
+  constructor(
+    private readonly studentService: StudentService,
+    private readonly jwtService: JwtService
+  ) {}
 
   async validateUser(email: string, password: string) {
     const student = await this.studentService.findByEmail(email);
@@ -22,7 +29,16 @@ export class AuthService {
     throw new Error('Email address or password provided is incorrect.')
   }
 
-  async login() {
-    throw new Error('Method not implemented.');
+  login(student: StudentEntity): StudentToken {
+    const payload: StudentPayload = {
+      sub: student.id,
+      email: student.email,
+    }
+
+    const jwtToken = this.jwtService.sign(payload)
+
+    return {
+      access_token: jwtToken
+    }
   }
 }

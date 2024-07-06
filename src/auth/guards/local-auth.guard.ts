@@ -11,11 +11,11 @@ export class LocalAuthGuard extends AuthGuard('local') {
     return super.canActivate(context);
   }
 
-  handleRequest(err, user) {
-    if (err || !user) {
+  handleRequest(err, student) {
+    if (err || !student) {
       throw new UnauthorizedException(err?.message);
     }
 
-    return user;
+    return student;
   }
 }
