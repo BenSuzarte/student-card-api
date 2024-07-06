@@ -31,9 +31,17 @@ export class AuthService {
   }
 
   login(student: StudentEntity): StudentToken {
+    const { 
+      id,
+      createdAt,
+      deletedAt,
+      updatedAt,
+      ...rest 
+    } = student
+
     const payload: StudentPayload = {
-      sub: student.id,
-      email: student.email,
+      sub: id,
+      ...rest
     }
 
     const jwtToken = this.jwtService.sign(payload)
