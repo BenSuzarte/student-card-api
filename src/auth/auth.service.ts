@@ -5,6 +5,7 @@ import { StudentEntity } from 'src/student/entities/student.entity';
 import { StudentPayload } from './models/StudentPayload';
 import { JwtService } from '@nestjs/jwt';
 import { StudentToken } from './models/StudentToken';
+import { UnauthorizedError } from './errors/unauthorized.error';
 
 @Injectable()
 export class AuthService {
@@ -26,7 +27,7 @@ export class AuthService {
       }
     }
 
-    throw new Error('Email address or password provided is incorrect.')
+    throw new UnauthorizedError('Email address or password provided is incorrect.');
   }
 
   login(student: StudentEntity): StudentToken {
