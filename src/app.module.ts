@@ -5,6 +5,8 @@ import { AuthModule } from './auth/auth.module';
 import { JwtAuthGuard } from './auth/guards/jwt-auth.guard';
 import { APP_GUARD } from '@nestjs/core';
 import { AppController } from './app.controller';
+import { PdfController } from './pdf/pdf.controller';
+import { PdfService } from './pdf/pdf.service';
 
 @Module({
   imports: [
@@ -25,8 +27,9 @@ import { AppController } from './app.controller';
     {
       provide: APP_GUARD,
       useClass: JwtAuthGuard
-    }
+    },
+    PdfService
   ],
-  controllers: [AppController]
+  controllers: [AppController, PdfController]
 })
 export class AppModule {}
