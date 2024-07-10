@@ -10,7 +10,7 @@ export interface StudentPayload {
   useCode: string;
   pictureOriginalName: string;
   pictureFile: string;
-  pictureUrl: string;
+  url: string;
   iat?: number;
   exp?: number;
 }

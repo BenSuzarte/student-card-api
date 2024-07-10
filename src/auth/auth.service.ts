@@ -41,6 +41,7 @@ export class AuthService {
 
     const payload: StudentPayload = {
       sub: id,
+      url: `${process.env.API_URL}/uploads/${rest.pictureFile}`,
       ...rest
     }
 

@@ -6,7 +6,7 @@ export interface StudentFromJwt {
   cpf: string;
   registration: string;
   validUntil: string;
-  pictureUrl: string;
+  url: string;
   pictureFile: string;
   pictureOriginalName: string;
   useCode: string;

@@ -40,9 +40,6 @@ export class StudentEntity {
   @Column({ name: 'picture_file', type: 'text', nullable: false, unique: true })
   pictureFile: string;
 
-  @Column({ name: 'picture_url', type: 'text', nullable: false, unique: true })
-  pictureUrl: string;
-
   @CreateDateColumn({ name: 'created_at' })
   createdAt: string;
 

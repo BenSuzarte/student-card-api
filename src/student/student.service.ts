@@ -26,7 +26,6 @@ export class StudentService
       useCode: useCode,
       pictureOriginalName: picture.originalname,
       pictureFile: picture.filename,
-      pictureUrl: `${process.env.API_URL}/uploads/${picture.filename}`,
       password: await bcrypt.hash(data.password, 10)
     }
     
