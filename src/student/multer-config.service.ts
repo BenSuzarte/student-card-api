@@ -1,5 +1,4 @@
 import { MulterOptions } from '@nestjs/platform-express/multer/interfaces/multer-options.interface';
-import { randomBytes } from 'crypto';
 import { diskStorage } from 'multer';
 
 export const MulterOptionsConfig: MulterOptions = {

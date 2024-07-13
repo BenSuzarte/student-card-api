@@ -1,17 +1,24 @@
-import { Controller, Get, Res } from '@nestjs/common';
+import { Body, Controller, Get, Header, Res } from '@nestjs/common';
 import { PdfService } from './pdf.service';
 import { CurrentStudent } from 'src/auth/decorators/current-student.decorator';
 import { StudentEntity } from 'src/student/entities/student.entity';
 
-@Controller('pdf')
+@Controller('document')
 export class PdfController {
 
   constructor( private readonly pdfService: PdfService ) {}
 
   @Get('me')
-  async generate( @Res() res, @CurrentStudent() student: StudentEntity ) {
-    const buffer = await this.pdfService.generate(student);
-    res.setHeader('Content-Type', 'application/pdf');
+  @Header('Content-type', 'application/pdf')
+  async generate( 
+
+    @Res() res, 
+    @CurrentStudent() student: StudentEntity, 
+    
+  ) {
+
+    const buffer = await this.pdfService.getDocument(student);
     res.send(buffer);
+
   }
 }

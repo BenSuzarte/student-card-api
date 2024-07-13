@@ -14,11 +14,11 @@ export class StudentService
   ) {}
 
   async save(data: SaveStudentDto, picture: Express.Multer.File): Promise<StudentEntity> {
-    
+
     const now = new Date();
     const validUntilDate = `05/${now.getFullYear() + 1}`;
 
-    const useCode = `BRA${Math.random().toString(9).substring(15)}BA`;
+    const useCode = `BRA${Math.random().toString(9).substring(15)} `;
 
     const student = {
       ...data,

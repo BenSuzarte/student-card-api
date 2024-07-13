@@ -1,4 +1,4 @@
-import { Body, Controller, FileTypeValidator, MaxFileSizeValidator, ParseFilePipe, Post, UploadedFile, UseInterceptors } from '@nestjs/common';
+import { Body, Controller, FileTypeValidator, MaxFileSizeValidator, ParseFilePipe, Post, UploadedFile, UploadedFiles, UseInterceptors } from '@nestjs/common';
 import { StudentService } from './student.service';
 import { StudentEntity } from './entities/student.entity';
 import { SaveStudentDto } from './dto/save-student.dto';

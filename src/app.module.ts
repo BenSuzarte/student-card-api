@@ -7,9 +7,14 @@ import { APP_GUARD } from '@nestjs/core';
 import { AppController } from './app.controller';
 import { PdfController } from './pdf/pdf.controller';
 import { PdfService } from './pdf/pdf.service';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
 
 @Module({
   imports: [
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '..', 'public'),
+    }),
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: process.env.DATABASE_HOST,
