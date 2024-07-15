@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/styles/style.css">
+
+  <title>{{ name }} | Carteira de Estudante</title>
+
+</head>
+<body>
+  <div class="container">
+    <h1 class="title"><strong>Carteira Nacional de Estudante</strong></h1>
+    <div class="box-container">
+      <section class="left-section">
+        <img class="logo" src="/images/logo-dne-branco.png" alt="">
+        <img src="../uploads/{{pictureFile}}" alt="">
+      </section>
+      <section class="right-container">
+        <h2 class="name">{{ name }}</h2>
+        <p class="info">{{ college }}</p>
+        <p class="info">{{ course }} </p>
+        <p class="info">CPF: {{ cpf }} </p>
+        <p class="info">Matrícula: {{ registration }} </p>
+        <p class="info">Válido até: {{ validUntil }} </p>
+        <div class="use-code">
+          <p class="info">Código de Uso</p>
+          <p class="code"><strong>{{ useCode }}</strong></p>
+        </div>
+      </section>
+    </div>
+    <p class="text">Todos os direitos reservados ao Ministério da Educação (MEC)</p>
+  </div>
+</body>
+</html>

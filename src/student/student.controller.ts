@@ -1,4 +1,4 @@
-import { Body, Controller, FileTypeValidator, MaxFileSizeValidator, ParseFilePipe, Post, UploadedFile, UploadedFiles, UseInterceptors } from '@nestjs/common';
+import { Body, Controller, FileTypeValidator, MaxFileSizeValidator, ParseFilePipe, Post, Res, UploadedFile, UploadedFiles, UseInterceptors } from '@nestjs/common';
 import { StudentService } from './student.service';
 import { StudentEntity } from './entities/student.entity';
 import { SaveStudentDto } from './dto/save-student.dto';
@@ -16,6 +16,7 @@ export class StudentController
   @UseInterceptors(FileInterceptor('picture', MulterOptionsConfig))
   async create(
 
+    @Res() res,
     @Body() body: SaveStudentDto, 
     @UploadedFile(
       new ParseFilePipe({
@@ -26,8 +27,12 @@ export class StudentController
       })
     ) picture: Express.Multer.File
 
-  ): Promise<StudentEntity> 
+  ) 
   {
-    return await this.studenteService.save(body, picture)
+    const response = await this.studenteService.save(body, picture)
+    if (response instanceof Error) {
+      return res.status(422).json({ error: response.message })
+    }
+    return res.json(response).status(201);
   }
 }
